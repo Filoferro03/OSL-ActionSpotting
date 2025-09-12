@@ -5,7 +5,7 @@ import glob
 
 # DIR = "/media/giancos/NewVolume/OSL-ActionSpotting/SoccerNet"
 SOCCERNET_ORIG_FOLDER = "/content/gdrive/MyDrive/datasets"
-SOCCERNET_ZIP_FOLDER = "/content/gdrive/MyDrive/Tesi_ActionSpotting_Data"
+SOCCERNET_ZIP_FOLDER = "/content/gdrive/MyDrive/datasets/SoccerNet_OSL_Annotations"
 # SOCCERNET_ZIP_FOLDER = "/media/giancos/NewVolume/OSL-ActionSpotting/SoccerNetZip/Json_features"
 
 # for split in ["train", "valid", "test", ["train", "valid", "test"]]:
