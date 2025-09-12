@@ -90,7 +90,7 @@ def evaluate_common_JSON(cfg, results, metric):
                 with open(
                     os.path.join(
                         results,
-                        os.path.splitext(game["path"])[0],
+                        os.path.splitext(game["path_features"])[0],
                         "results_spotting.json",
                     )
                 ) as f:
