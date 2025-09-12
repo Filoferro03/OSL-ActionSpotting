@@ -252,7 +252,7 @@ class LiteContextAwareModel(LiteBaseModel):
                     "videos"
                 ]
                 for index in np.arange(len(list_videos)):
-                    video = list_videos[index]["path_feature"]
+                    video = list_videos[index]["path_features"]
 
                     if self.infer_split:
                         video = os.path.splitext(video)[0]
