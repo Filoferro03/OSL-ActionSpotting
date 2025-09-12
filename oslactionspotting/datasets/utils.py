@@ -465,7 +465,7 @@ def annotationstoe2eformat(label_files, video_dirs, input_fps, extract_fps, dali
 
             num_events = 0
 
-            vc = cv2.VideoCapture(os.path.join(video_dir, video["path"]))
+            vc = cv2.VideoCapture(os.path.join(video_dir, video["path_features"]))
             width = int(vc.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(vc.get(cv2.CAP_PROP_FRAME_HEIGHT))
             fps = vc.get(cv2.CAP_PROP_FPS)
