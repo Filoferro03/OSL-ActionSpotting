@@ -175,7 +175,7 @@ class FeaturefromJson(Dataset):
 class FeatureClipsfromJSON(FeaturefromJson):
     """Class that inherits from FeaturefromJson to prepare features data as clips of features.
     This class is used for the pooling methods.
-    The class has 2 behaviours for processing the data depending if it is for training or testing purposes.
+    The class has 2 behaviours for processing the data depending if it is for training or for testing purposes.
 
     Args:
         path (str|List(str)): Path of the input. Can be a json file, a features file or a list of json files (list only for training purposes).
@@ -208,8 +208,9 @@ class FeatureClipsfromJSON(FeaturefromJson):
                 for video in tqdm(single_data_json["videos"]):
                     # for video in tqdm(self.data_json["videos"]):
                     # Load features
+                    # ===> CORRETTO (e corretto anche il refuso path_feature -> path_features)
                     features = np.load(
-                        os.path.join(self.features_dir[i], video["path"])
+                        os.path.join(self.features_dir[i], video["path_features"])
                     )
                     features = features.reshape(-1, features.shape[-1])
 
@@ -267,9 +268,11 @@ class FeatureClipsfromJSON(FeaturefromJson):
 
             # Load features
             if self.is_json:
-                features = np.load(os.path.join(self.features_dir[0], video["path"]))
+                # ===> CORRETTO
+                features = np.load(os.path.join(self.features_dir[0], video["path_features"]))
             else:
-                features = np.load(os.path.join(video["path"]))
+                # ===> CORRETTO
+                features = np.load(os.path.join(video["path_features"]))
             features = features.reshape(-1, features.shape[-1])
 
             # Load labels
@@ -292,8 +295,8 @@ class FeatureClipsfromJSON(FeaturefromJson):
                 off=int(self.window_size_frame / 2),
                 clip_length=self.window_size_frame,
             )
-
-            return video["path"], features, labels
+            # ===> CORRETTO
+            return video["path_features"], features, labels
 
     def __len__(self):
         if self.train:
@@ -305,7 +308,7 @@ class FeatureClipsfromJSON(FeaturefromJson):
 class FeatureClipChunksfromJson(FeaturefromJson):
     """Class that inherits from FeaturefromJson to prepare features data as clips of features based on a chunk approach.
     This class is used for the CALF method.
-    The class has 2 behaviours for processing the data depending if it is for training or testing purposes.
+    The class has 2 behaviours for processing the data depending if it is for training or for testing purposes.
 
     Args:
         path (str|List(str)): Path of the input. Can be a json file, a features file or a list of json files (list only for training purposes).
@@ -367,8 +370,9 @@ class FeatureClipChunksfromJson(FeaturefromJson):
                 for video in tqdm(single_data_json["videos"]):
                     # for video in tqdm(self.data_json["videos"]):
                     # Load features
+                    # ===> CORRETTO
                     features = np.load(
-                        os.path.join(self.features_dir[i], video["path"])
+                        os.path.join(self.features_dir[i], video["path_features"])
                     )
 
                     # Load labels
@@ -462,9 +466,11 @@ class FeatureClipChunksfromJson(FeaturefromJson):
 
             # Load features
             if self.is_json:
-                features = np.load(os.path.join(self.features_dir[0], video["path"]))
+                # ===> CORRETTO
+                features = np.load(os.path.join(self.features_dir[0], video["path_features"]))
             else:
-                features = np.load(os.path.join(video["path"]))
+                # ===> CORRETTO
+                features = np.load(os.path.join(video["path_features"]))
 
             # Load labels
             labels = np.zeros((features.shape[0], self.num_classes))
