@@ -465,7 +465,7 @@ def annotationstoe2eformat(label_files, video_dirs, input_fps, extract_fps, dali
 
             num_events = 0
 
-            vc = cv2.VideoCapture(os.path.join(video_dir, video["video_path"]))
+            vc = cv2.VideoCapture(os.path.join(video_dir, video["path_video"]))
             width = int(vc.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(vc.get(cv2.CAP_PROP_FRAME_HEIGHT))
             fps = vc.get(cv2.CAP_PROP_FPS)
@@ -488,7 +488,7 @@ def annotationstoe2eformat(label_files, video_dirs, input_fps, extract_fps, dali
                     num_frames_dali = num_frames_after
 
             # video_id = os.path.splitext(video["path"])[0]
-            video_id = os.path.join(video_dir, video["video_path"])
+            video_id = os.path.join(video_dir, video["path_video"])
 
             events = []
             for annotation in video_annotations:
@@ -529,7 +529,7 @@ def annotationstoe2eformat(label_files, video_dirs, input_fps, extract_fps, dali
                     "width": width,
                     "height": height,
                     "video": video_id,
-                    "path": video["video_path"],
+                    "path": video["path_video"],
                 }
             )
         assert len(video_annotations) == num_events
