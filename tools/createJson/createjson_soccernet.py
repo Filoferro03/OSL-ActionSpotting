@@ -18,7 +18,7 @@ def createjson(split, json_file):
 
     # DIR="path/to/SoccerNet/"
     from SoccerNet.utils import getListGames
-    for game in getListGames(split=split, path=SOCCERNET_ORIG_FOLDER):
+    for game in getListGames(split):
         for half in [1,2]:
         # for feature in sorted(glob.glob(f'{DIR}/{game}/*_ResNET_TF2_PCA512.npy')):
             feature = os.path.join(SOCCERNET_ORIG_FOLDER, game, f'{half}_ResNET_TF2_PCA512.npy')
